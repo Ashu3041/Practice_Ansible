@@ -1,0 +1,12 @@
+---
+- name: file.txt
+  hosts: aws
+  tasks: 
+    - name: Checking file status
+      stat: 
+        path: /tmp/file.txt
+      register: output
+    - name: print file status 
+      debug:
+        msg: "File is there"
+      when: output.stat.exists == true 

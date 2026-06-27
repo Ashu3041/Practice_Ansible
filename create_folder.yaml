@@ -1,0 +1,18 @@
+---
+- name: Directory
+  hosts: aws
+  tasks:
+    - name: Creating directory
+      file:
+        path: /tmp/d1 
+        state: directory
+        mode: '0755'
+    - name: Check directory
+      stat: 
+        path: /tmp/d1
+      register: output
+    - name: Print status
+      debug: 
+        msg: "File is already there"
+      when: output.stat.exists == true
+

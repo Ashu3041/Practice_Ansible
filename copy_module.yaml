@@ -1,0 +1,11 @@
+---
+- name: Copy file
+  hosts: aws
+  tasks:
+    - name: Copy a file
+      copy:
+        src: ./file.txt
+        dest: /tmp/file.txt
+    - name: debug
+      debug:
+        msg: "Hello I am Ansible"

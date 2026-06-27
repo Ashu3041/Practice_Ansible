@@ -1,0 +1,15 @@
+---
+- hosts: aws
+  become: yes
+
+  tasks:
+    - name: Install Apache2
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+    - name: Start Apache2
+      service:
+        name: apache2
+        state: started
+        enabled: yes

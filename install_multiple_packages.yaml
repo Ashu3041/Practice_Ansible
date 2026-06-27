@@ -1,0 +1,14 @@
+---
+- name: Install Multiple Packages
+  hosts: aws
+  become: yes
+  vars_prompt:
+    - name: PackageName
+      prompt: Enter Package Name
+      private: no
+  tasks: 
+    - name: Install The Package
+      apt: 
+        name: "{{ PackageName }}"
+        state: present
+        update_cache: yes

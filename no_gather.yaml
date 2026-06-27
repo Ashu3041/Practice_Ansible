@@ -1,0 +1,15 @@
+---
+- name: Create user
+  hosts: aws
+  become: yes
+  gather_facts: no
+  vars: 
+    user1: ashu
+
+  tasks:
+    - name: Creating user
+      user:
+        name: "{{ user1 }}"
+        shell: /bin/bash
+        groups: sudo
+        append: yes

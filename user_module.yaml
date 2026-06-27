@@ -1,0 +1,12 @@
+---
+- name: Create user
+  hosts: aws
+  become: yes
+
+  tasks:
+    - name: Creating user
+      user:
+        name: papi
+        shell: /bin/bash
+        groups: sudo
+        append: yes

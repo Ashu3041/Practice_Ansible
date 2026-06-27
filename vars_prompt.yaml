@@ -1,0 +1,16 @@
+---
+- name: Create user
+  hosts: aws
+  become: yes
+  vars_prompt: 
+    - name: username
+      prompt: Enter user name
+      private: no
+
+  tasks:
+    - name: Creating user
+      user:
+        name: "{{ username }}"
+        shell: /bin/bash
+        groups: sudo
+        append: yes
