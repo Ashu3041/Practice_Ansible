@@ -1,0 +1,12 @@
+---
+- name: Package fact
+  hosts: aws
+  become: yes
+  tasks: 
+   - name: Populate Package Fact
+     ansible.builtin.package_facts:
+       manager: auto
+     register: output
+   - name: Check Package
+     debug:
+       msg: "Package is : {{ ansible_facts.packages.git }}"  

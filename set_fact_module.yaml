@@ -1,0 +1,23 @@
+---
+- name: install multiple packages 
+  hosts: aws
+  become: yes
+  vars: 
+    app: nginx
+    version: '1.14' 
+  tasks:
+    - set_fact: 
+        app: nginx
+        version: '1.14'
+    - name: setup module
+      ansible.builtin.setup: 
+      register: output
+    - name: Printing setup information
+      debug:
+        msg: "{{ output.ansible_facts.ansible_all_ipv4_addresses[0] }}"
+    - name: Print app name
+      debug:
+        var: "{{ app }}"
+    - name: Print app version
+      debug:
+        var: "{{ version }}"

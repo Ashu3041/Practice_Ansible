@@ -1,0 +1,11 @@
+---
+- name: Service fact
+  hosts: aws
+  become: yes
+  tasks: 
+   - name: Populate service fact
+     ansible.builtin.service_facts:
+     register: output
+   - name: Check Nginx
+     debug:
+       msg: "Nginx is running : {{ ansible_facts.services.nginx }}"  
