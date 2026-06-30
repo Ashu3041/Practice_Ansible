@@ -1,0 +1,17 @@
+---
+- name: tags using
+  hosts: aws
+  become: yes
+  tasks:
+    - name: Creating a File
+      copy:
+        dest: /tmp/file2.txt
+        content: |
+          Adding IP's
+      tags: create
+    - name: Adding new line
+      ansible.builtin.lineinfile:
+        path: /tmp/file1.txt
+        line: Adding IP 2
+        insertafter: EOF
+      tags: add 

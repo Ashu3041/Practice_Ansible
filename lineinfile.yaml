@@ -1,0 +1,12 @@
+---
+- name: File create and add content
+  hosts: aws
+  become: yes
+  tasks:
+    - name: creating file
+      ansible.builtin.lineinfile:
+        path: /tmp/file1.txt
+        line: Adding IP 2
+        insertafter: EOF
+      
+

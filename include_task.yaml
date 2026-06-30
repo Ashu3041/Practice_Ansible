@@ -1,0 +1,11 @@
+---
+- name: include task
+  hosts: aws
+  become: yes
+  tasks: 
+    - name: Include task use for aws linux
+      ansible.builtin.include_tasks: aws_linux.yaml
+      when: ansible_os_family == "RedHat"
+    - name: Include task use for ubuntu
+      ansible.builtin.include_tasks: ubuntu.yaml
+      when: ansible_os_family == "Debian"

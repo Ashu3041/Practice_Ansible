@@ -1,0 +1,11 @@
+---
+- name: File create and add content
+  hosts: aws
+  become: yes
+  tasks: 
+    - name: creating file
+      copy:
+        dest: /tmp/file1.txt
+        content: |
+          Adding IP's
+

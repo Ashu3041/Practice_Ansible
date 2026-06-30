@@ -1,0 +1,5 @@
+---
+- name: Patch Amazon Linux
+  dnf:
+    name: "*"
+    state: latest
