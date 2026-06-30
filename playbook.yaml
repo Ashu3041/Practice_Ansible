@@ -1,0 +1,8 @@
+---
+- name: Role Implementation
+  hosts: aws
+  become: yes
+  
+  roles:
+    - webserver
+    - nginx

@@ -1,0 +1,8 @@
+---
+packages: 
+  - git
+  - tree
+  - nginx
+  - vsftpd
+  - apache2
+# vars file for webserver

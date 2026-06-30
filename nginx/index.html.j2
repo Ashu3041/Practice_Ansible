@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ company_name }} - Nginx Server</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,.15);
+            text-align: center;
+        }
+
+        h1 {
+            color: #009639;
+        }
+
+        h2 {
+            color: #444;
+        }
+
+        p {
+            color: #666;
+            font-size: 18px;
+        }
+
+        table {
+            width: 60%;
+            margin: 30px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background: #009639;
+            color: white;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        footer {
+            margin-top: 30px;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Welcome to {{ company_name }}</h1>
+
+    <h2>{{ project_name }}</h2>
+
+    <p>This web page has been deployed using <strong>Ansible + Jinja2 + Nginx</strong>.</p>
+
+    <table>
+        <tr>
+            <th>Server Name</th>
+            <td>{{ ansible_hostname }}</td>
+        </tr>
+
+        <tr>
+            <th>Operating System</th>
+            <td>{{ ansible_distribution }}</td>
+        </tr>
+
+        <tr>
+            <th>IP Address</th>
+            <td>{{ ansible_default_ipv4.address }}</td>
+        </tr>
+
+        <tr>
+            <th>Environment</th>
+            <td>{{ environment }}</td>
+        </tr>
+
+        <tr>
+            <th>Administrator</th>
+            <td>{{ admin_name }}</td>
+        </tr>
+
+        <tr>
+            <th>Date</th>
+            <td>{{ ansible_date_time.date }}</td>
+        </tr>
+
+        <tr>
+            <th>Time</th>
+            <td>{{ ansible_date_time.time }}</td>
+        </tr>
+    </table>
+
+    <footer>
+        Managed automatically by Ansible
+    </footer>
+
+</div>
+
+</body>
+</html>

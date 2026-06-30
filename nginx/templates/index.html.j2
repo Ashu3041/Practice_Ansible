@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .container {
+            width: 70%;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: gray;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>{{ heading }}</h1>
+
+    <p>Welcome to <strong>{{ company_name }}</strong></p>
+
+    <p>Server Name : <b>{{ inventory_hostname }}</b></p>
+
+    <p>IP Address : <b>{{ ansible_default_ipv4.address }}</b></p>
+
+    <p>Operating System : <b>{{ ansible_distribution }}</b></p>
+
+    <p>Date & Time : <b>{{ ansible_date_time.date }} {{ ansible_date_time.time }}</b></p>
+
+    <div class="footer">
+        Managed by Ansible ❤️
+    </div>
+
+</div>
+
+</body>
+</html>

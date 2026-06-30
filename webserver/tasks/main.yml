@@ -1,0 +1,15 @@
+---
+- name: Uninstalling "{{ packages }}" on Ubuntu 
+  apt:
+    name: "{{ item }}"
+    state: absent
+  loop: "{{ packages }}"
+  when: ansible_os_family == "Debian"
+
+- name: Uninstalling "{{ packages }}" on AWS Linux
+  dnf:
+    name: "{{ item }}"
+    state: absent
+  loop: "{{ packages }}"
+  when: ansible_os_family == "RedHat"
+
