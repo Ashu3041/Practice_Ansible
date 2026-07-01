@@ -1,8 +1,6 @@
 ---
-- name: Role Implementation
+- name: MySql Server Set Up
   hosts: aws
-  become: yes
-  
+  become: true
   roles:
-    - webserver
-    - nginx
+    - mysql
