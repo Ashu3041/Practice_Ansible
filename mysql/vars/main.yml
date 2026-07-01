@@ -1,0 +1,6 @@
+---
+# vars file for mysql
+mysql_db: company
+mysql_user: admin
+mysql_password: admin123
+mysql_table: employee

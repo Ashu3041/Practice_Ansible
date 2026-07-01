@@ -1,0 +1,57 @@
+---
+# tasks file for mysql
+    - name: Installing MeriaDB Server on AWS Linux
+      dnf:
+        name:
+          - mariadb105-server
+          - python3-pip
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Install PyMySQL via pip for Ansible
+      pip:
+        name: pymysql
+      when: ansible_os_family  == "RedHat"
+
+    - name: Installing Mysql Server on Ubuntu
+      apt:
+        name:
+          - mysql-server
+          - python3-pymysql
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Starting Mysql Server
+      service:
+        name: mysql
+        state: started
+        enabled: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Starting MariaDB Server
+      service:
+        name: mariadb
+        state: started
+        enabled: yes
+      when: ansible_os_family == "RedHat"
+
+    # --- RENDER THE TEMPLATE SCRIPT ---
+    - name: Include database configuration tasks
+      include_tasks: database.yaml
+
+    # --- IMPORT THE COMPILED SCRIPT ---
+    - name: Import compiled SQL script into database
+      community.mysql.mysql_db:
+        name: "{{ mysql_database }}"
+        state: import
+        target: /tmp/create_table.sql
+        login_user: root
+        login_unix_socket: "{{ '/var/run/mysqld/mysqld.sock' if ansible_os_family == 'Debian' else '/var/lib/mysql/mysql.sock' }}"
+
+    # --- SINGLE DYNAMIC CONFIGURATION TASK ---
+    - name: Configure MySql
+      template:
+        src: my.cnf.j2
+        dest: "{{ '/etc/mysql/my.cnf' if ansible_os_family == 'Debian' else '/etc/my.cnf' }}"
+      notify: Restart MySQL

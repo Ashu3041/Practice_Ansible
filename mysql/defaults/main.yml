@@ -1,0 +1,25 @@
+---
+# defaults file for mysql
+mysql_database: company
+
+mysql_table: employee
+
+mysql_user: admin
+
+mysql_password: admin123
+
+employees:
+  - name: Papi
+    age: 25
+
+  - name: Soham
+    age: 30
+
+  - name: Pratik
+    age: 28
+
+mysql_bind: 0.0.0.0
+
+mysql_port: 3306
+
+mysql_connections: 200

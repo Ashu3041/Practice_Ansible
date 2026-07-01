@@ -1,0 +1,5 @@
+---
+- name: Render and Copy SQL Script to remote host
+  template:
+    src: templates/create_table.sql.j2  # Added "templates/" prefix
+    dest: /tmp/create_table.sql
